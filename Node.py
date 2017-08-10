@@ -28,7 +28,7 @@ class Node:
 		self.connects[dir] = True
 		self.nodes[dir].connects[self.__inverse[dir]] = True
 	
-	def __is_node(self, dir):
+	def __has_node(self, dir):
 		return self.nodes[dir] != None
 	
 	def __is_connected(self, dir):
@@ -63,17 +63,17 @@ class Node:
 	def connect_left(self):
 		self.__connect_node(self.__l)
 		
-	def is_top_node(self):
-		self.__is_node(self.__t)
+	def has_top_node(self):
+		self.__has_node(self.__t)
 	
-	def is_right_node(self):
-		self.__is_node(self.__r)
+	def has_right_node(self):
+		self.__has_node(self.__r)
 	
-	def is_bottom_node(self):
-		self.__is_node(self.__b)
+	def has_bottom_node(self):
+		self.__has_node(self.__b)
 	
-	def is_left_node(self):
-		self.__is_node(self.__l)
+	def has_left_node(self):
+		self.__has_node(self.__l)
 	
 	def is_top_connected(self):
 		self.__is_connected(self.__t)
