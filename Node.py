@@ -5,6 +5,7 @@ class Node:
 	__b = 2
 	__l = 3
 	
+	__all     = [__t, __r, __b, __l]
 	__inverse = [__b, __l, __t, __r]
 
 	def __init__(self):
@@ -98,3 +99,41 @@ class Node:
 	
 	def get_left_node(self):
 		return self.__get_node(self.__l)
+	
+	def get_nodes(self):
+		out = []
+		for n in self.nodes:
+			if n != None:
+				out.append(n)
+		return out
+	
+	def is_set_to(self, node):
+		return node in nodes
+	
+	def is_connected_to(self, node):
+		for i in range(4):
+			if node == self.nodes[i]:
+				return self.connects[i]
+		return False
+	
+	def get_connected_nodes(self):
+		out = []
+		for i in range(4):
+			if self.connects[i] == True:
+				out.append(self.nodes[i])
+		return out
+	
+	def get_unconnected_nodes(self):
+		out = []
+		for i in range(4):
+			if self.connects[i] == False:
+				out.append(self.nodes[i])
+		return out
+	
+	def connect_to(self, node):
+		if not self.is_set_to(node):
+			raise KeyError("Node is not set to this one.")
+		for i in range(4):
+			if node = self.nodes[i]:
+				self.connects[i] = True
+				return
