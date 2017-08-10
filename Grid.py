@@ -1,4 +1,5 @@
 from Node import Node
+from Pointer import Pointer
 
 class Grid:
 	
@@ -24,9 +25,10 @@ class Grid:
 		
 		self.top_left = current
 	
-	def get_pointer(self, x, y):
-		#TODO
-		return Grid_Pointer()
+	def get_pointer(self, x = 0, y = 0):
+		p = Pointer(self.top_left, self.xd, self.yd)
+		p.goto(x, y)
+		return p
 	
 	def printable(self, wall_chr, node_chr, connector_chr):
 		wc = str(wall_chr)[0]
@@ -41,6 +43,30 @@ class Grid:
 		#Top wall
 		out += wc * (self.xd * 2 + 1) + nl
 		#Iterate down rows
+		for y in range(self.yd):
+			for x in range(self.yd):
+				#Row - down nodes
+				row1 = wc
+				
+				pass
+				
+				row1 += wc + nl
+				
+				#Row - between nodes
+				row2 = ""
+				if y != self.yd - 1: #Last row case
+					row2 = wc
+					pass
+					row2 += wc + nl
+				
+				out += row1 + row2
+				
+		#Bottom wall
+		out += wc * (self.xd * 2 + 1)
+		return out
+		
+		
+		
 		do = True
 		while do:
 			out += wc
@@ -81,5 +107,3 @@ class Grid:
 		out += wc * (self.xd * 2 + 1)
 		
 		return out
-		
-		
