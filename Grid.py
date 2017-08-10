@@ -32,12 +32,18 @@ class Grid:
 			zip_lines(row_old, row_new)
 			row_old = row_new
 	
-	def get_pointer(self, x = 0, y = 0):
-		p = Pointer(self.top_left, self.xd, self.yd)
-		p.goto(x, y)
-		return p
+	def get_node(self, x, y):
+		if x < 0 or x >= self.xd or\
+			y < 0 or y >= self.yd:
+			raise IndexError("That position is outside of the grid boundaries.")
+		current = self.top_left
+		for i in range(x):
+			current = current.get_right_node()
+		for i in range(y):
+			current = current.get_bottom_node()
+		return current
 	
-	def printable(self, wall_chr, node_chr, connector_chr):
+	def printable(self, wall_chr = 'X', node_chr = ' ', connector_chr = ' '):
 		wc = str(wall_chr)[0]
 		nc = str(node_chr)[0]
 		cc = str(connector_chr)[0]
