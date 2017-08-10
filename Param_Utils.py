@@ -17,8 +17,10 @@ def __b32dec(enc):
 	return base64.b32decode(enc)
 
 #seed sanitize
-def__ss(seed):
+def __ss(seed):
 	return re.sub('[^' + string.ascii_letters + string.digits + ']', '', str(seed))
+def sanitize_seed(seed):
+	return __ss(seed)
 	
 #number sanitize
 def __ns(i):
@@ -44,7 +46,7 @@ def param_format(xd, yd, sp, seed):
 	sp = __ns(yd)
 	seed =__ss(seed)
 	
-	out = "Maze " + encode(xd, yd, sp, seed) + "\n"
+	out = "Maze Hash:" + encode(xd, yd, sp, seed) + "\n"
 	out += "Dimensions: " + xd + "x" + yd + "\n"
 	out += "Starting points: " + sp
 	return out
