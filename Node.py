@@ -35,7 +35,7 @@ class Node:
 		return self.connects[dir]
 	
 	def __get_node(self, dir):
-		if self.__has_node(dir):
+		if not self.__has_node(dir):
 			raise IndexError("Node doesn't exist! First check if it does with is_DIR_node().");
 		return self.nodes[dir]
 	

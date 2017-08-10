@@ -1,4 +1,4 @@
-import Node
+from Node import Node
 
 class Grid:
 	
@@ -13,7 +13,8 @@ class Grid:
 		line_start = None
 		for y in range(self.yd):
 			nn = Node()
-			nn.set_bottom(line_start)
+			if line_start != None:
+				nn.set_bottom(line_start)
 			current = nn
 			line_start = nn
 			for x in range(self.xd):
