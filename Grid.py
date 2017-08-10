@@ -9,21 +9,28 @@ class Grid:
 		if self.xd < 1 or self.yd < 1:
 			raise ValueError("Grid dimensions must be one or greater.")
 		
-		#Make grid
-		current = None
-		line_start = None
-		for y in range(self.yd):
-			nn = Node()
-			if line_start != None:
-				nn.set_bottom(line_start)
-			current = nn
-			line_start = nn
-			for x in range(self.xd):
-				nn = Node()
-				nn.set_right(current)
-				current = nn
+		def make_line(length):
+			first = Node()
+			current = first
+			for x in range(length - 1):
+				current.set_right( Node() )
+				current = current.get_right_node()
+			return first
 		
-		self.top_left = current
+		def zip_lines(top, bottom):
+			while top.has_right_node() and bottom.has_right_node():
+				top.set_bottom(bottom)
+				top = top.get_right_node()
+				bottom = bottom.get_right_node()
+			top.set_bottom(bottom)
+		
+		#Make grid
+		self.top_left = make_line(self.xd)
+		row_old = self.top_left
+		for i in range(self.yd - 1):
+			row_new = make_line(self.xd)
+			zip_lines(row_old, row_new)
+			row_old = row_new
 	
 	def get_pointer(self, x = 0, y = 0):
 		p = Pointer(self.top_left, self.xd, self.yd)
