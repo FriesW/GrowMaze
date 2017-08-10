@@ -40,19 +40,42 @@ class Grid:
 		#Top wall
 		out += wc * (self.xd * 2 + 1) + nl
 		#Iterate down rows
-		for y in range(self.yd):
+		do = True
+		while do:
 			out += wc
 			#Between nodes
-			for x in range(self.xd):
+			while current.has_right_node():
 				out += nc
-				pass #TODO
-			out += wc + nl
+				if current.is_right_connected():
+					out += cc
+				else:
+					out += wc
+				current = current.get_right_node()
+			out += nc + wc + nl
+			
 			#Between rows
-			if y != self.yd - 1: #Skip last row, as it doesn't exist
-				out += wc
-				for x in range(self.xd):
-					pass #TODO
+			current = line_start
+			if line_start.has_bottom_node(): #Last row case
+				while current.has_right_node():
+					out += wc
+					if current.is_bottom_connected():
+						out += cc
+					else:
+						out += wc
+					current = current.get_right_node()
+				#Last node in row
+				if current.is_bottom_connected():
+					out += cc
+				else:
+					out += wc
 				out += wc + nl
+			
+			#Next row of NODES
+			do = line_start.has_bottom_node()
+			if do:
+				current = line_start.get_bottom_node()
+				line_start = current
+			
 		#Bottom wall
 		out += wc * (self.xd * 2 + 1)
 		
