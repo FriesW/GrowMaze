@@ -28,6 +28,12 @@ class Node:
 		self.connects[dir] = True
 		self.nodes[dir].connects[self.__inverse[dir]] = True
 	
+	def __is_node(self, dir):
+		return self.nodes[dir] != None
+	
+	def __is_connected(self, dir):
+		return self.connects[dir]
+	
 	def set_top(self, node):
 		self.__set_node(node, self.__t)
 		
@@ -51,3 +57,27 @@ class Node:
 		
 	def connect_left(self):
 		self.__connect_node(self.__l)
+		
+	def is_top_node(self):
+		self.__is_node(self.__t)
+	
+	def is_right_node(self):
+		self.__is_node(self.__r)
+	
+	def is_bottom_node(self):
+		self.__is_node(self.__b)
+	
+	def is_left_node(self):
+		self.__is_node(self.__l)
+	
+	def is_top_connected(self):
+		self.__is_connected(self.__t)
+	
+	def is_right_connected(self):
+		self.__is_connected(self.__r)
+	
+	def is_bottom_connected(self):
+		self.__is_connected(self.__b)
+	
+	def is_left_connected(self):
+		self.__is_connected(self.__l)
