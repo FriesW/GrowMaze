@@ -51,66 +51,36 @@ class Grid:
 		out += wc * (self.xd * 2 + 1) + nl
 		#Iterate down rows
 		for y in range(self.yd):
-			for x in range(self.yd):
+			#Iterate horizontally across nodes
+			row1 = ""
+			row2 = ""
+			for x in range(self.xd):
 				#Row - down nodes
-				row1 = wc
-				
-				pass
-				
-				row1 += wc + nl
+				row1 += nc
+				if current.is_right_connected():
+					row1 += cc
+				else:
+					row1 += wc
 				
 				#Row - between nodes
-				row2 = ""
-				if y != self.yd - 1: #Last row case
-					row2 = wc
-					pass
-					row2 += wc + nl
-				
-				out += row1 + row2
-				
-		#Bottom wall
-		out += wc * (self.xd * 2 + 1)
-		return out
-		
-		
-		
-		do = True
-		while do:
-			out += wc
-			#Between nodes
-			while current.has_right_node():
-				out += nc
-				if current.is_right_connected():
-					out += cc
-				else:
-					out += wc
-				current = current.get_right_node()
-			out += nc + wc + nl
-			
-			#Between rows
-			current = line_start
-			if line_start.has_bottom_node(): #Last row case
-				while current.has_right_node():
-					out += wc
+				if current.has_bottom_node(): #Last row case
+					row2 += wc
 					if current.is_bottom_connected():
-						out += cc
+						row2 += cc
 					else:
-						out += wc
+						row2 += wc
+				
+				if current.has_right_node():
 					current = current.get_right_node()
-				#Last node in row
-				if current.is_bottom_connected():
-					out += cc
-				else:
-					out += wc
-				out += wc + nl
 			
-			#Next row of NODES
-			do = line_start.has_bottom_node()
-			if do:
-				current = line_start.get_bottom_node()
-				line_start = current
+			out += wc + row1 + nl
 			
+			if current.has_bottom_node():
+				line_start = line_start.get_bottom_node()
+				current = line_start
+				
+				out += row2 + wc + nl
+				
 		#Bottom wall
 		out += wc * (self.xd * 2 + 1)
-		
 		return out
