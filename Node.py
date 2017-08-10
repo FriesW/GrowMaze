@@ -34,6 +34,11 @@ class Node:
 	def __is_connected(self, dir):
 		return self.connects[dir]
 	
+	def __get_node(self, dir):
+		if self.__is_node(dir):
+			raise IndexError("Node doesn't exist! First check if it does with is_DIR_node().");
+		return self.nodes[dir]
+	
 	def set_top(self, node):
 		self.__set_node(node, self.__t)
 		
@@ -81,3 +86,15 @@ class Node:
 	
 	def is_left_connected(self):
 		self.__is_connected(self.__l)
+	
+	def get_top_node(self):
+		self.__get_node(self.__t)
+	
+	def get_right_node(self):
+		self.__get_node(self.__r)
+	
+	def get_bottom_node(self):
+		self.__get_node(self.__b)
+	
+	def get_left_node(self):
+		self.__get_node(self.__l)
