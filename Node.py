@@ -64,37 +64,37 @@ class Node:
 		self.__connect_node(self.__l)
 		
 	def has_top_node(self):
-		self.__has_node(self.__t)
+		return self.__has_node(self.__t)
 	
 	def has_right_node(self):
-		self.__has_node(self.__r)
+		return self.__has_node(self.__r)
 	
 	def has_bottom_node(self):
-		self.__has_node(self.__b)
+		return self.__has_node(self.__b)
 	
 	def has_left_node(self):
-		self.__has_node(self.__l)
+		return self.__has_node(self.__l)
 	
 	def is_top_connected(self):
-		self.__is_connected(self.__t)
+		return self.__is_connected(self.__t)
 	
 	def is_right_connected(self):
-		self.__is_connected(self.__r)
+		return self.__is_connected(self.__r)
 	
 	def is_bottom_connected(self):
-		self.__is_connected(self.__b)
+		return self.__is_connected(self.__b)
 	
 	def is_left_connected(self):
-		self.__is_connected(self.__l)
+		return self.__is_connected(self.__l)
 	
 	def get_top_node(self):
-		self.__get_node(self.__t)
+		return self.__get_node(self.__t)
 	
 	def get_right_node(self):
-		self.__get_node(self.__r)
+		return self.__get_node(self.__r)
 	
 	def get_bottom_node(self):
-		self.__get_node(self.__b)
+		return self.__get_node(self.__b)
 	
 	def get_left_node(self):
-		self.__get_node(self.__l)
+		return self.__get_node(self.__l)
