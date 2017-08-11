@@ -129,17 +129,7 @@ class Node:
 				out.append(self.nodes[i])
 		return out
 	
-	def __connect_to(self, node):
-		if not self.is_set_to(node):
-			raise KeyError("Supplied Node is not set to this Node.")
-		for i in range(4):
-			if node == self.nodes[i]:
-				self.connects[i] = True
-				return
-	
 	def connect_to(self, node):
-		#node.__connect_to(self)
-		#self.__connect_to(node)
 		for i in range(4):
 			if node == self.nodes[i]:
 				self.__connect_node(i)

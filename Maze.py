@@ -3,8 +3,6 @@ from Grid import Grid
 from Group_Manager import Group_Manager
 import random
 
-master = Grid(20,20)
-
 def hash_maze(hash):
 	l = decode(hash)
 	make_maze(l[0], l[1], l[2], l[3])
@@ -17,7 +15,7 @@ def make_maze(xd, yd, sp, seed):
 	
 	random.seed(seed)
 	
-	#master = Grid(xd, yd)
+	master = Grid(xd, yd)
 	
 	#Select starting points for growth
 	starting_points = []
@@ -60,45 +58,10 @@ def make_maze(xd, yd, sp, seed):
 				print "Combined two groups"
 		
 		if done:
-			print master.printable()
-			raw_input()
+			pass
 			#Here we need to remove nodes which are no longer live from group g
 		
 	print master.printable()
 
 
 make_maze(20,20,1,"Apples")
-	
-'''	
-	#Begin growth
-	while len(groups[0][1]) > 0: #Continue untill no nodes are alive
-		#For every group of nodes
-		for all_nodes, live_nodes in groups:
-			#For every live node
-			for node in live_nodes:
-				#Every unconnected node has a 1% chance
-				for candidate in node.get_unconnected_nodes():
-					#Prevent self linking
-					if candidate not in all_nodes:
-						#1% chance
-						if random.randrange(100) == 0:
-							#Growth!
-							candidate.connect_to(node)
-							#Look for overlap with another group
-							for i in range(len(groups)):
-								other_all, other_live = groups[i]
-								if candidate in other_all:
-									all_nodes.extend(other_all)
-									live_nodes.extend(other_live)
-								
-							for other_all, other_live in groups:
-								if candidate in other_all:
-									
-									
-							#Add candidate
-							all_nodes.append(candidate)
-							live_nodes.append(candidate)
-	def consider_group(
-			
-	
-	random.randrange'''

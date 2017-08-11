@@ -41,10 +41,3 @@ class Group_Manager:
 	
 	def get_group(self, index):
 		return self.all_groups[index]
-	
-	#yield iterate_groups(self):
-	#	pass
-		#HOW?!?!
-		
-	
-		
