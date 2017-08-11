@@ -14,6 +14,7 @@ class Group:
 			self.all.append(node)
 	
 	def add_live(self, node):
+		print "\tadd_live",node,"to",self.live
 		self.add(node)
 		if node not in self.live:
 			self.live.append(node)
@@ -31,7 +32,8 @@ class Group:
 		return len(self.live)
 	
 	def get_live_node(self, index):
-		return self.live[index][:]
+		print "\tget_live_node", self.live
+		return self.live[index]
 	
 	
 	

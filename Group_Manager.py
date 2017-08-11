@@ -1,13 +1,13 @@
 from Group import Group
 
-def Group_Manager:
+class Group_Manager:
 	def __init__(self):
 		self.group_lookup = {}
 		self.all_groups = []
 		
 	def make_group(self, seed_node):
 		g = Group(self.group_lookup, self.all_groups)
-		g.add(seed_node)
+		g.add_live(seed_node)
 	
 	def combine_groups(self, g1, g2):
 		if g1 == g2:
@@ -42,8 +42,8 @@ def Group_Manager:
 	def get_group(self, index):
 		return self.all_groups[index]
 	
-	yield iterate_groups(self):
-		pass
+	#yield iterate_groups(self):
+	#	pass
 		#HOW?!?!
 		
 	

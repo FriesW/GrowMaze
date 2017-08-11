@@ -1,5 +1,4 @@
 from Node import Node
-from Pointer import Pointer
 
 class Grid:
 	

@@ -108,7 +108,7 @@ class Node:
 		return out
 	
 	def is_set_to(self, node):
-		return node in nodes
+		return node in self.nodes
 	
 	def is_connected_to(self, node):
 		for i in range(4):
@@ -134,6 +134,6 @@ class Node:
 		if not self.is_set_to(node):
 			raise KeyError("Node is not set to this one.")
 		for i in range(4):
-			if node = self.nodes[i]:
+			if node == self.nodes[i]:
 				self.connects[i] = True
 				return
