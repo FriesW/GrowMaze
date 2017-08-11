@@ -110,10 +110,9 @@ class Node:
 		return node in self.nodes
 	
 	def is_connected_to(self, node):
-		for i in range(4):
-			if node == self.nodes[i]:
-				return self.connects[i]
-		return False
+		if node not in self.nodes:
+			return False
+		return self.connects[self.nodes.index[node]]
 	
 	def get_connected_nodes(self):
 		out = []
@@ -130,7 +129,6 @@ class Node:
 		return out
 	
 	def connect_to(self, node):
-		for i in range(4):
-			if node == self.nodes[i]:
-				self.__connect_node(i)
-				return
+		if node not in self.nodes:
+			raise IndexError("There is no node to connect to.")
+		self.__connect_node(self.nodes.index(node))

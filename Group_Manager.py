@@ -21,9 +21,8 @@ class Group_Manager:
 			ng.add(node)
 		
 		#Remove old groups from the array
-		for i in range(len(self.all_groups)-1,-1,-1):
-			if self.all_groups[i] == g1 or self.all_groups[i] == g2:
-				del self.all_groups[i]
+		self.all_groups.pop( self.all_groups.index(g1) )
+		self.all_groups.pop( self.all_groups.index(g2) )
 		#New group was automatically added upon its creation
 	
 	def node_in_group(self, node):
