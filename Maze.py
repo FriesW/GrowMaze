@@ -28,7 +28,8 @@ def make_maze(xd, yd, sp, seed):
 	for x, y in starting_points:
 		gm.make_group( master.get_node(x, y) );
 	
-	while gm.total_groups() > 1:
+	#while gm.get_group(0).total_live_nodes() > 0:
+	while gm.get_group(0).total_all_nodes() < xd * yd:
 		g = gm.get_group( random.randrange( gm.total_groups() ) )
 		#Every group will always have live nodes, until there is one group
 		sn = g.get_live_node( random.randrange( g.total_live_nodes() ) ) #source node
@@ -39,9 +40,11 @@ def make_maze(xd, yd, sp, seed):
 		while not done and len(cns) > 0:
 			cn = cns.pop(0) #candidate node
 			if not gm.node_in_group(cn):
+				sn.connect_to(cn)
 				g.add_live(cn)
 				done = True
 			elif g != gm.get_group_by(cn):
+				sn.connect_to(cn)
 				gm.combine_groups(g, gm.get_group_by(cn))
 				done = True
 		
