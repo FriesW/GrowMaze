@@ -42,12 +42,18 @@ class Grid:
 			current = current.get_bottom_node()
 		return current
 	
-	def printable(self, wall_chr = 'X', node_chr = ' ', connector_chr = ' ',\
+	def printable(self, wall_chr = u"\u2588", node_chr = ' ', connector_chr = ' ',\
 						horizontal_scale = 3):
-		hs = horizontal_scale
-		wc = str(wall_chr)[0] * hs
-		nc = str(node_chr)[0] * hs
-		cc = str(connector_chr)[0] * hs
+		hs = int(horizontal_scale)
+		if type(wall_chr) != unicode:
+			wall_chr = str(wall_chr)
+		wc = wall_chr[0] * hs
+		if type(node_chr) != unicode:
+			node_chr = str(node_chr)
+		nc = node_chr[0] * hs
+		if type(connector_chr) != unicode:
+			connector_chr = str(connector_chr)
+		cc = connector_chr[0] * hs
 		nl = "\n"
 		
 		out = ""
