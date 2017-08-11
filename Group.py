@@ -21,6 +21,9 @@ class Group:
 	def get_all_live(self):
 		return self.live[:]
 	
+	def total_all_nodes(self):
+		return len(self.all)
+	
 	def get_all(self):
 		return self.all[:]
 	
