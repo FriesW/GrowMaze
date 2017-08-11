@@ -24,10 +24,34 @@ def make_maze(xd, yd, sp, seed):
 			starting_points.append(candidate)
 	
 	#Create groups
-	groups = [] #groups[groupnumber][all_nodes|live_nodes]
+	gm = Group_Manager()
 	for x, y in starting_points:
-		groups.append( [ [master.get_node(x, y)], [master.get_node(x, y)] ])
+		gm.make_group( master.get_node(x, y) );
 	
+	while gm.total_groups() > 1:
+		g = gm.get_group( random.randrange( gm.total_groups() ) )
+		#Every group will always have live nodes, until there is one group
+		sn = g.get_live_node( random.randrange( g.total_live_nodes() ) ) #source node
+		cns = cn.get_unconnected_nodes() #candidate nodes
+		random.shuffle(cns)
+		
+		done = False
+		while not done and len(cns) > 0:
+			cn = cns.pop(0) #candidate node
+			if not gm.node_in_group(cn):
+				g.add_live(cn)
+				done = True
+			elif g != gm.get_group_by(cn):
+				gm.combine_groups(g, gm.get_group_by(cn))
+				done = True
+		
+		if done:
+			pass
+			#Here we need to remove nodes which are no longer live from group g
+		
+		
+		
+'''	
 	#Begin growth
 	while len(groups[0][1]) > 0: #Continue untill no nodes are alive
 		#For every group of nodes
@@ -59,4 +83,4 @@ def make_maze(xd, yd, sp, seed):
 	def consider_group(
 			
 	
-	random.randrange
+	random.randrange'''

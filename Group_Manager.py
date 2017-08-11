@@ -36,6 +36,12 @@ def Group_Manager:
 			raise KeyError("Node does not map to a group.")
 		return self.group_lookup[node]
 	
+	def total_groups(self):
+		return len(self.all_groups)
+	
+	def get_group(self, index):
+		return self.all_groups[index]
+	
 	yield iterate_groups(self):
 		pass
 		#HOW?!?!

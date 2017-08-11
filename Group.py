@@ -19,10 +19,16 @@ class Group:
 			self.live.append(node)
 	
 	def get_all_live(self):
-		return self.live
+		return self.live[:]
 	
 	def get_all(self):
-		return self.all
+		return self.all[:]
+	
+	def total_live_nodes(self):
+		return len(self.live)
+	
+	def get_live_node(self, index):
+		return self.live[index][:]
 	
 	
 	
