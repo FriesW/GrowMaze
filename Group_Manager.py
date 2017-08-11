@@ -24,6 +24,8 @@ class Group_Manager:
 		self.all_groups.pop( self.all_groups.index(g1) )
 		self.all_groups.pop( self.all_groups.index(g2) )
 		#New group was automatically added upon its creation
+		
+		return ng
 	
 	def node_in_group(self, node):
 		return node in self.group_lookup

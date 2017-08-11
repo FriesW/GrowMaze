@@ -17,6 +17,15 @@ class Group:
 		self.add(node)
 		if node not in self.live:
 			self.live.append(node)
+			
+		#If all bordering nodes are in group, then node is dead
+		for nq in self.live:
+			total = len(nq.get_nodes())
+			for n in nq.get_nodes():
+				if n in self.lookup and self.lookup[n] == self:
+					total -= 1
+			if total == 0:
+				self.live.pop( self.live.index(nq) )
 	
 	def get_all_live(self):
 		return self.live[:]
