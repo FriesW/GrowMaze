@@ -24,8 +24,7 @@ class Node:
 	
 	def __connect_node(self, dir):
 		if self.nodes[dir] == None:
-			print "Error: no node assigned"
-			return
+			raise IndexError("There is no node to connect to.")
 		self.connects[dir] = True
 		self.nodes[dir].connects[self.__inverse[dir]] = True
 	
@@ -119,21 +118,29 @@ class Node:
 	def get_connected_nodes(self):
 		out = []
 		for i in range(4):
-			if self.connects[i] == True:
+			if self.nodes[i] != None and self.connects[i] == True:
 				out.append(self.nodes[i])
 		return out
 	
 	def get_unconnected_nodes(self):
 		out = []
 		for i in range(4):
-			if self.connects[i] == False:
+			if self.nodes[i] != None and self.connects[i] == False:
 				out.append(self.nodes[i])
 		return out
 	
-	def connect_to(self, node):
+	def __connect_to(self, node):
 		if not self.is_set_to(node):
-			raise KeyError("Node is not set to this one.")
+			raise KeyError("Supplied Node is not set to this Node.")
 		for i in range(4):
 			if node == self.nodes[i]:
 				self.connects[i] = True
+				return
+	
+	def connect_to(self, node):
+		#node.__connect_to(self)
+		#self.__connect_to(node)
+		for i in range(4):
+			if node == self.nodes[i]:
+				self.__connect_node(i)
 				return

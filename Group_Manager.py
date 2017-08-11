@@ -14,7 +14,7 @@ class Group_Manager:
 			return
 		
 		#Add nodes to new group
-		ng = Group()
+		ng = Group(self.group_lookup, self.all_groups)
 		for node in g1.get_all_live() + g2.get_all_live():
 			ng.add_live(node)
 		for node in g1.get_all() + g2.get_all():
