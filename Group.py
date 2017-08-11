@@ -17,15 +17,19 @@ class Group:
 		self.add(node)
 		if node not in self.live:
 			self.live.append(node)
-			
-		#If all bordering nodes are in group, then node is dead
-		for nq in self.live:
-			total = len(nq.get_nodes())
-			for n in nq.get_nodes():
+		
+		def trim_from_node(node, recurse):
+			#If all bordering nodes are in group, then node is dead
+			total = len(node.get_nodes())
+			for n in node.get_nodes():
 				if n in self.lookup and self.lookup[n] == self:
 					total -= 1
+					if recurse:
+						trim_from_node(n, False)
 			if total == 0:
-				self.live.pop( self.live.index(nq) )
+				self.live.pop( self.live.index(node) )
+		
+		trim_from_node(node, True)
 	
 	def get_all_live(self):
 		return self.live[:]

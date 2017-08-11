@@ -56,4 +56,4 @@ def make_maze(xd, yd, sp, seed):
 	print master.printable()
 
 
-make_maze(7,7,7,"Apples")
+make_maze(5,5,1,"Apples")
