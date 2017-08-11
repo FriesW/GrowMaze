@@ -24,9 +24,7 @@ class Group_Manager:
 		for i in range(len(self.all_groups)-1,-1,-1):
 			if self.all_groups[i] == g1 or self.all_groups[i] == g2:
 				del self.all_groups[i]
-		
-		#Add new group to array
-		self.all_groups.append(ng)
+		#New group was automatically added upon its creation
 	
 	def node_in_group(self, node):
 		return node in self.group_lookup

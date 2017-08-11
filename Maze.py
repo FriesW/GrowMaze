@@ -58,10 +58,12 @@ def make_maze(xd, yd, sp, seed):
 				print "Combined two groups"
 		
 		if done:
-			pass
+			print master.printable()
+			raw_input()
 			#Here we need to remove nodes which are no longer live from group g
-		
+	
+	print param_format(xd, yd, sp, seed)
 	print master.printable()
 
 
-make_maze(20,20,1,"Apples")
+make_maze(7,7,2,"Apples")
