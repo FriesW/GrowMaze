@@ -39,7 +39,7 @@ Starting points: 7
 ███████████████████████████████████████████████████████████████████████████████████████████████████
 ```
 
-##How it works
+## How it works
 A grid is created, which is essentially a 2D doubly-linked list. Seed starting locations are picked at random. These locations are randomly picked for growth. Growth is the connection of two nodes. Each collection of connected nodes is randomly selected and randomly grown until the entire grid is consumed. If a collection of nodes is grown/connected into another collection of nodes, the two are combined.
 
 Part of the reason for this code was to experiment with how the number of starting locations effects the appearance of the maze. That is why the number of seed locations can be changed as a parameter. Much simpler code would have assumed that there was only one set of connected nodes, which all grew from one seed.
