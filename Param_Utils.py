@@ -46,7 +46,7 @@ def param_format(xd, yd, sp, seed):
 	sp = __ns(sp)
 	seed =__ss(seed)
 	
-	out = "Maze Hash:" + encode(xd, yd, sp, seed) + "\n"
+	out = "Maze Hash: " + encode(xd, yd, sp, seed) + "\n"
 	out += "Dimensions: " + xd + "x" + yd + "\n"
 	out += "Starting points: " + sp
 	return out
