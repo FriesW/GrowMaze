@@ -109,10 +109,10 @@ class Node:
 	def is_set_to(self, node):
 		return node in self.nodes
 	
-	def is_connected_to(self, node):
+	def is_connected_to(self, node):#Not used
 		if node not in self.nodes:
 			return False
-		return self.connects[self.nodes.index[node]]
+		return self.connects[self.nodes.index(node)]
 	
 	def get_connected_nodes(self):
 		out = []
