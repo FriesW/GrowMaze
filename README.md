@@ -1,6 +1,6 @@
 # GrowMaze
 Experimentation in creating mazes with python.\
-Also see: [MutateMaze](https://github.com/FriesW/MutateMaze)\
+Also see: [FriesW/MutateMaze](https://github.com/FriesW/MutateMaze)\
 Also see: [FriesW/ConnectMaze](https://github.com/FriesW/ConnectMaze)
 
 ## Use
